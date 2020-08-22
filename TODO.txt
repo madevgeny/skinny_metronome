@@ -1,0 +1,15 @@
+1) Load/save presets.
+2) Option to disable screen off.
+3) More click sounds.
+4) Use stream to play sound.
+5) Investigate background mode.
+6) Night mode.
+7) Disable visualization on stop.
+8) Test with incoming call.
+9) Test with device rotation.
+10) Test multi window mode.
+11) Send crash reports.
+12) Don't save config on pause. When to save?
+13) Disable animation optionally
+14) Multiple animations.
+15) Fix indexing by google issuse (<application>).

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Skinny Metronome</string>
+    <string name="play">Play</string>
+    <string name="stop">Stop</string>
+
+    <string name="increase">+</string>
+    <string name="decrease">-</string>
+
+    <string name="lamp_view">Lamp view</string>
+
+    <string name="save_preset">Save preset</string>
+    <string name="load_preset">Load preset</string>
+
+    <string name="preference_file_key">smetronome</string>
+
+    <string name="save_preset_message">Enter name of preset</string>
+
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+
+</resources>

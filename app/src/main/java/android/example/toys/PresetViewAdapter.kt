@@ -3,7 +3,6 @@ package android.example.toys
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class PresetViewAdapter(private val presets: List<MetronomePreset>) :

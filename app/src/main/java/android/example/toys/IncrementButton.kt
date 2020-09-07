@@ -4,7 +4,7 @@ import android.os.Handler
 import android.view.MotionEvent
 import android.widget.Button
 
-class IncrementButton(private val button: Button, private val listener: (Int) -> Unit) {
+class IncrementButton(button: Button, private val listener: (Int) -> Unit) {
 	val BPM_BUTTON_BOOST_COOLDOWN: Long = 500
 	val BPM_BUTTON_BOOST = 10
 
@@ -22,7 +22,7 @@ class IncrementButton(private val button: Button, private val listener: (Int) ->
 
 		button.setOnTouchListener{ v, e ->
 			run {
-				when (e.getAction()) {
+				when (e.action) {
 					MotionEvent.ACTION_DOWN -> {
 						bpmBoost = false
 						buttonHandler.postDelayed(buttonRun, BPM_BUTTON_BOOST_COOLDOWN)

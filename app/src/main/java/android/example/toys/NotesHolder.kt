@@ -6,13 +6,21 @@ import android.graphics.drawable.PictureDrawable
 import com.caverock.androidsvg.SVG
 import com.caverock.androidsvg.SVGParseException
 
-class NotesHolder{
+class NotesHolder//svg.setDocumentHeight((float)imageButton.getHeight() * 0.75f);
+//svg.setDocumentWidth((float)imageButton.getWidth() * 0.75f);
+//svg.setDocumentHeight((float)imageButton.getHeight() * 0.75f);
+//svg.setDocumentWidth((float)imageButton.getWidth() * 0.75f);
+//svg.setDocumentHeight((float)imageButton.getHeight() * 0.75f);
+//svg.setDocumentWidth((float)imageButton.getWidth() * 0.75f);
+//svg.setDocumentHeight((float)imageButton.getHeight() * 0.75f);
+//svg.setDocumentWidth((float)imageButton.getWidth() * 0.75f);
+internal constructor(ctx: Context) {
 	lateinit var quarter: Drawable
 	lateinit var triple: Drawable
 	lateinit var eight: Drawable
 	lateinit var sixteen: Drawable
 
-	internal constructor(ctx: Context) {
+	init {
 		try {
 			var svg = SVG.getFromResource(ctx, R.raw.r1_4)
 			//svg.setDocumentHeight((float)imageButton.getHeight() * 0.75f);

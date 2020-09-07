@@ -3,7 +3,7 @@ package android.example.toys
 import android.app.Application
 import android.content.Context
 
-public class MetronomeApplication : Application() {
+class MetronomeApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 

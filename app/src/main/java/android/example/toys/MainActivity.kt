@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 	private var playing = true
 
-	internal inner class OnPresetsClickListener(private val presetPopup: PresetsPopup) : View.OnClickListener {
+	internal class OnPresetsClickListener(private val presetPopup: PresetsPopup) : View.OnClickListener {
 		override fun onClick(v: View) {
 			presetPopup.showAtLocation(v, Gravity.BOTTOM, 0, 0)
 		}
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
 		val model by viewModels<MetronomeViewModel>()
 
-		model.liveData.observe(this, ClickObserver(b.lamp, Sounder(this)))
+		model.liveData.observe(this, ClickObserver(b.lamp, Sounder2(this)))
 		model.metronome.callback = {clickType -> run{
 			model.liveData.value = clickType
 		}}

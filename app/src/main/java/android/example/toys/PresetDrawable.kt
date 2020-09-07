@@ -5,18 +5,18 @@ import android.graphics.drawable.Drawable
 
 
 class PresetDrawable(private val text: String) : Drawable() {
-	private val paint: Paint
+	private val paint: Paint = Paint()
 
 	override fun draw(canvas: Canvas) {
 		canvas.drawText(text, 0f, 0f, paint)
 	}
 
 	override fun setAlpha(alpha: Int) {
-		paint.setAlpha(alpha)
+		paint.alpha = alpha
 	}
 
 	override fun setColorFilter(cf: ColorFilter?) {
-		paint.setColorFilter(cf)
+		paint.colorFilter = cf
 	}
 
 	override fun getOpacity(): Int {
@@ -24,7 +24,6 @@ class PresetDrawable(private val text: String) : Drawable() {
 	}
 
 	init {
-		paint = Paint()
 		paint.color = Color.WHITE
 		paint.textSize = 22f
 		paint.isAntiAlias = true

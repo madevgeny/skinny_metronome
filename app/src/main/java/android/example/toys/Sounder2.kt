@@ -6,7 +6,7 @@ import android.media.SoundPool
 import android.os.Build
 import androidx.annotation.RequiresApi
 
-class Sounder @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP) internal constructor(activity: Activity) : ISounder {
+class Sounder2 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP) internal constructor(activity: Activity) : ISounder {
 	private val pool: SoundPool = SoundPool.Builder()
 		.setMaxStreams(1)
 		.setAudioAttributes(AudioAttributes.Builder()

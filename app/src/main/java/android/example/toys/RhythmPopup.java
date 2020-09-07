@@ -5,7 +5,6 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -17,7 +16,6 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 final class RhythmPopup {
 
 	private final PopupWindow popupWindow;
-	private final ViewGroup popupView;
 
 	private final ImageButton r1;
 	private final ImageButton r2;
@@ -27,7 +25,7 @@ final class RhythmPopup {
 	RhythmPopup(Activity act){
 		// inflate the layout of the popup window
 		LayoutInflater inflater = (LayoutInflater)act.getSystemService(LAYOUT_INFLATER_SERVICE);
-		popupView = (ViewGroup) inflater.inflate(R.layout.rythm_popup, null);
+		ViewGroup popupView = (ViewGroup) inflater.inflate(R.layout.rythm_popup, null);
 
 		r1 = popupView.findViewById(R.id.quarterImageButton);
 		r2 = popupView.findViewById(R.id.eightImageButton);
@@ -42,7 +40,7 @@ final class RhythmPopup {
 		int screenWidth = 900;
 		int screenHeight = 400;
 		try {
-			WindowManager wm = (WindowManager)popupView.getContext().getSystemService(Context.WINDOW_SERVICE);
+			WindowManager wm = (WindowManager) popupView.getContext().getSystemService(Context.WINDOW_SERVICE);
 			DisplayMetrics displaymetrics = new DisplayMetrics();
 			wm.getDefaultDisplay().getMetrics(displaymetrics);
 			screenWidth = displaymetrics.widthPixels;
@@ -53,12 +51,9 @@ final class RhythmPopup {
 		popupWindow = new PopupWindow(popupView, screenWidth, screenHeight / 3, true);
 
 		// dismiss the popup window when touched
-		popupView.setOnTouchListener(new View.OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				popupWindow.dismiss();
-				return true;
-			}
+		popupView.setOnTouchListener((v, event) -> {
+			popupWindow.dismiss();
+			return true;
 		});
 	}
 

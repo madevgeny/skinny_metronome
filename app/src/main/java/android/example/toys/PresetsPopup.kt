@@ -1,14 +1,16 @@
 package android.example.toys
 
-import android.app.Activity
 import android.content.Context
 import android.util.DisplayMetrics
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.PopupWindow
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-internal class PresetsPopup(context: Context, private val presetsReader: IPresetsReader) : PopupWindow(context) {
+internal class PresetsPopup(context: Context, presetsReader: IPresetsReader) : PopupWindow(context) {
 	private val popupView: ViewGroup
 
 	fun setOnClickListener(listener: View.OnClickListener?) {}

@@ -6,6 +6,7 @@ import android.media.AudioFormat
 import android.media.AudioTrack
 import android.os.Build
 import androidx.annotation.RequiresApi
+import kotlin.experimental.and
 
 @RequiresApi(Build.VERSION_CODES.M)
 class Sounder2 internal constructor(activity: Activity) : ISounder {
@@ -14,6 +15,10 @@ class Sounder2 internal constructor(activity: Activity) : ISounder {
 	val numSamples = duration * sampleRate
 	private val audioTrack: AudioTrack
 	private val buffer = ShortArray(numSamples)
+
+	private val freqOfTone = 440.0 // hz
+	private val sample = DoubleArray(numSamples)
+	private val generatedSnd = ByteArray(2 * numSamples)
 
 	override fun play(clickType: ClickType) {
 		when (clickType) {
@@ -55,20 +60,20 @@ class Sounder2 internal constructor(activity: Activity) : ISounder {
 
 			buffer[i] =(samples[i] * Short.MAX_VALUE).toShort() // Higher amplitude increases volume
 			if(i < 241000){
-				buffer[i] = 30000
+				//buffer[i] = 30000
 			}
 			//buffer[i] = (samples[241000] * Short.MAX_VALUE).toShort()
 		}
-		buffer[0] = 0;
+		genTone()
 		audioTrack.play()
-		var l = audioTrack.write(buffer, 0, buffer.size, AudioTrack.WRITE_BLOCKING);
-		l = 1;
+//		audioTrack.write(buffer, 0, buffer.size, AudioTrack.WRITE_BLOCKING);
+		audioTrack.write(generatedSnd, 0, generatedSnd.size);
 	}
-/*
+
 	fun genTone() {
 		// fill out the array
 		for (i in 0 until numSamples) {
-			sample.get(i) = Math.sin(2 * Math.PI * i / (sampleRate / freqOfTone))
+			sample[i] = Math.sin(2 * Math.PI * i / (sampleRate / freqOfTone))
 		}
 
 		// convert to 16 bit pcm sound array
@@ -76,11 +81,11 @@ class Sounder2 internal constructor(activity: Activity) : ISounder {
 		var idx = 0
 		for (dVal in sample) {
 			// scale to maximum amplitude
-			val `val` = (dVal * 32767).toShort()
+			val v = (dVal * 32767).toInt().toShort()
+			//val v = (0.8 * 32767).toInt().toShort()
 			// in 16 bit wav PCM, first byte is the low order byte
-			generatedSnd.get(idx++) = (`val` and 0x00ff)
-			generatedSnd.get(idx++) = (`val` and 0xff00 ushr 8)
+			generatedSnd[idx++] = (v and 0x00ff).toByte()
+			generatedSnd[idx++] = ((v and 0xff00.toShort()).toInt() shr 8).toByte()
 		}
 	}
-*/
 }
